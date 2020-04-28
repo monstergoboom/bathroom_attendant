@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package models;
+
+option java_package = "com.monstergoboom.game.models";
+option java_outer_classname = "ItemDataProtos";
+
+message ItemData {
+    string name = 1;
+    string description = 2;
+}

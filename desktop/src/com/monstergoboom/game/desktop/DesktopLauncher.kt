@@ -5,8 +5,7 @@ import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
 import com.monstergoboom.game.BathroomAttendantGame
 
 object DesktopLauncher {
-    @JvmStatic
-    fun main(arg: Array<String>) {
+    @JvmStatic fun main(arg: Array<String>) {
         val config = LwjglApplicationConfiguration()
         LwjglApplication(BathroomAttendantGame(), config)
     }

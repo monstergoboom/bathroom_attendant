@@ -1,11 +1,26 @@
 apply plugin: "kotlin"
+apply plugin: "com.google.protobuf"
 
 sourceCompatibility = 1.6
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-sourceSets.main.java.srcDirs = [ "src/" ]
-
+sourceSets.main.java.srcDirs = [ "src/"]
 
 eclipse.project {
     name = appName + "-core"
+}
+
+protobuf {
+    protoc {
+        artifact = "com.google.protobuf:protoc:3.11.4"
+    }
+    generateProtoTasks {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option "lite"
+                }
+            }
+        }
+    }
 }
