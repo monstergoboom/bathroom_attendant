@@ -2,14 +2,10 @@ package com.monstergoboom.game
 
 import com.monstergoboom.game.interfaces.*
 
-class Urinal(override val price: Float, override val id: String,
+class Urinal(override val value: Float, override val id: String,
              override val name: String, override val description: String)
     : Flushable, Interactable, Breakable, Valuable, Identifiable {
-    override fun worth() {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
-    }
-
-    override fun cost() {
+    override fun worth(): Float {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
