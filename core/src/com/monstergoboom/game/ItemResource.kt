@@ -1,6 +1,5 @@
 package com.monstergoboom.game
 
-import com.badlogic.gdx.utils.Logger
 import com.monstergoboom.game.interfaces.Resource
 import org.slf4j.LoggerFactory
 import java.util.concurrent.atomic.AtomicInteger

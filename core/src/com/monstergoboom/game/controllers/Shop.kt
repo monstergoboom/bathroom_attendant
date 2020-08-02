@@ -3,19 +3,19 @@ package com.monstergoboom.game.controllers
 import com.monstergoboom.game.interfaces.services.ShopService
 
 class Shop: ShopService {
-    override fun buyItemFromShop() {
+    override fun buy() {
         TODO("Not yet implemented")
     }
 
-    override fun sellItemToShop() {
+    override fun sell() {
         TODO("Not yet implemented")
     }
 
-    override fun addItemToInventory() {
+    override fun add() {
         TODO("Not yet implemented")
     }
 
-    override fun showItemInventory() {
+    override fun show() {
         TODO("Not yet implemented")
     }
 }
