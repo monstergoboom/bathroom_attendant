@@ -3,7 +3,7 @@ package com.monstergoboom.game
 import kotlin.math.absoluteValue
 
 class Store {
-    var items = mutableMapOf<Item, Int>()
+    private var items = mutableMapOf<Item, Int>()
 
     fun load() {
 

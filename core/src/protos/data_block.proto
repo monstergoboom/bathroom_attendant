@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+package model;
+
+option java_package="com.monstergoboom.game.models";
+option java_multiple_files = true;
+
+message DataBlock {
+    int32 id = 1;
+    string name = 2;
+    string block_content = 3;
+    string block_content_type_cd = 4;
+    string modified_at = 5;
+}

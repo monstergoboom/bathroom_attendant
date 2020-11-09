@@ -1,0 +1,42 @@
+syntax = "proto3";
+
+package model;
+
+option java_package="com.monstergoboom.game.models";
+option java_multiple_files = true;
+
+message ItemData {
+    string id = 1;
+    string name = 2;
+    string description = 3;
+    float value = 4;
+    enum ItemCategory {
+        NONE_CATEGORY = 0;
+        EDIBLE = 1;
+        WEARABLE = 2;
+        KEEPSAKE = 3;
+        DISPOSABLE = 4;
+    }
+    ItemCategory item_category = 5;
+    enum ItemType {
+        NONE_TYPE = 0;
+        GUM = 1;
+        MOUTHWASH = 2;
+        MINT = 3;
+        TOOTHPASTE = 4;
+        DEODORANT = 21;
+        COLOGN = 22;
+        ANTIPERSPERANT =23 ;
+        WIPES = 24;
+        COMB = 41;
+        BRUSH = 42;
+        GEL = 43;
+        MOUSSE = 44;
+        HAIRSPRAY = 45;
+        HAIRPASTE = 46;
+        CANDY = 61;
+        CHOCOLATE_BARS = 62;
+        NUTS = 63;
+    }
+    ItemType item_type = 6;
+}

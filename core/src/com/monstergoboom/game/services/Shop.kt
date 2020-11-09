@@ -1,4 +1,4 @@
-package com.monstergoboom.game.controllers
+package com.monstergoboom.game.services
 
 import com.monstergoboom.game.interfaces.services.ShopService
 

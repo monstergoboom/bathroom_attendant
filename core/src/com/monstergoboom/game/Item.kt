@@ -4,12 +4,11 @@ import com.monstergoboom.game.interfaces.Identifiable
 import com.monstergoboom.game.interfaces.Purchasable
 import com.monstergoboom.game.interfaces.Sellable
 import com.monstergoboom.game.interfaces.Valuable
+import com.monstergoboom.game.models.ItemData
 
-class Item(override val id: String, override val name: String, override val description: String,
-           override val value: Float): Valuable, Sellable, Purchasable, Identifiable {
-
+class Item(val item: ItemData): Valuable, Sellable, Purchasable, Identifiable {
     override fun worth(): Float {
-        return value
+        TODO("not implemented")
     }
 
     override fun buy() {
@@ -26,5 +25,17 @@ class Item(override val id: String, override val name: String, override val desc
 
     override fun sell() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun getId(): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun getName(): String {
+        TODO("Not yet implemented")
+    }
+
+    override fun getDescription(): String {
+        TODO("Not yet implemented")
     }
 }

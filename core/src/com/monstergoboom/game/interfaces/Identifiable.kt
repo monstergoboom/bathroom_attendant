@@ -1,7 +1,7 @@
 package com.monstergoboom.game.interfaces
 
 interface Identifiable {
-    val id: String
-    val name: String
-    val description: String
+    fun getId(): String;
+    fun getName(): String;
+    fun getDescription(): String;
 }
