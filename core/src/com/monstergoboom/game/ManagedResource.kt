@@ -17,11 +17,12 @@ class ManagedResource {
     }
 
     suspend fun load() {
-        logger.debug("Resources", "Loading Resources...");
-        resources.forEach {
-            r -> r.load()
-            logger.debug("Resources", "Complete: {0}".format(r.getStatusComplete()));
+        logger.info("Loading All Resources...")
+        resources.forEach { r ->
+            logger.info("Loading -> %s".format(r.javaClass.simpleName))
+            r.load()
+            logger.info("7")
         }
-        logger.debug("Resources", "...Completed Resource Load");
+        logger.info("...Completed All Resource Loading.")
     }
 }

@@ -1,34 +1,35 @@
 package com.monstergoboom.game
 
-import kotlin.math.absoluteValue
+import com.monstergoboom.game.models.ItemData
+import java.util.*
 
 class Store {
-    private var items = mutableMapOf<Item, Int>()
+    private val inventory: MutableMap<CategoryType, Map<Item, Int>> = mutableMapOf<CategoryType, Map<Item, Int>>();
+    private val catalog: Catalog = Catalog()
 
-    fun load() {
+    fun addItem(category: CategoryType, item: Item, quantity: Int) {
+        val existingItems: Map<Item, Int> = getItems(category)
 
-    }
+        val items: MutableMap<Item, Int> = existingItems.toMutableMap()
 
-    fun addToStore(item: Item, quantity: Int) {
+        items.merge(item, quantity) { x, y -> x + y }
 
+        inventory[category] = items;
     }
 
     fun purchase(item: Item, quantity: Int): Boolean {
         return true
     }
 
-    fun updateStock(item: Item, quantity: Int) {
+    fun updateQuantity(item: Item, quantity: Int) {
 
     }
 
     fun checkAvailability(item: Item): Int {
-        val quantity: Int? = items[item]
-
-        if (null != quantity) {
-            return quantity.absoluteValue
-        }
-
         return 0
     }
 
+    fun getItems(category: CategoryType): Map<Item, Int> {
+        return inventory.getOrDefault(category, emptyMap())
+    }
 }
