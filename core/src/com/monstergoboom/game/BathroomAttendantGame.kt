@@ -5,18 +5,17 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import com.monstergoboom.game.interfaces.services.GameConfigurationService
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope.coroutineContext
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.slf4j.LoggerFactory
-import java.util.logging.Level
-import java.util.logging.Logger
-import kotlin.coroutines.coroutineContext
 
-class BathroomAttendantGame: ApplicationAdapter() {
+class BathroomAttendantGame(configurationService: GameConfigurationService)
+    : ApplicationAdapter() {
 
+    private val configurationService: GameConfigurationService = configurationService;
     private val managedSpriteBatch: ManagedSpriteBatch = ManagedSpriteBatch()
     private val managedTexture: ManagedTexture = ManagedTexture()
     private val managedResource: ManagedResource = ManagedResource()

@@ -4,12 +4,13 @@ import android.os.Bundle
 
 import com.badlogic.gdx.backends.android.AndroidApplication
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
-import com.monstergoboom.game.BathroomAttendantGame
+import com.monstergoboom.game.services.CoreConfiguration
 
 class AndroidLauncher : AndroidApplication() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         val config = AndroidApplicationConfiguration()
-        initialize(BathroomAttendantGame(), config)
+        val gameConfig = CoreConfiguration();
+        initialize(BathroomAttendantGame(gameConfig), config)
     }
 }

@@ -1,5 +1,5 @@
 android {
-    compileSdkVersion 29
+    compileSdkVersion 30
     sourceSets {
         main {
             manifest.srcFile 'AndroidManifest.xml'
@@ -18,7 +18,7 @@ android {
     }
     defaultConfig {
         applicationId "com.monstergoboom.game"
-        targetSdkVersion 29
+        targetSdkVersion 30
         minSdkVersion 29
         versionCode 1
         versionName "1.0"

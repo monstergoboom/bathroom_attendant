@@ -1,5 +1,9 @@
 package com.monstergoboom.game.views
 
-class Shop {
+import com.monstergoboom.game.interfaces.View
 
+class Shop: View {
+    override fun draw() {
+        TODO("Not yet implemented")
+    }
 }
