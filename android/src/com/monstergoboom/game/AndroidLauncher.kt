@@ -11,6 +11,6 @@ class AndroidLauncher : AndroidApplication() {
         super.onCreate(savedInstanceState)
         val config = AndroidApplicationConfiguration()
         val gameConfig = CoreConfiguration();
-        initialize(BathroomAttendantGame(gameConfig), config)
+        initialize(BathroomAttendantGame(gameConfig, AndroidRenderer()), config)
     }
 }

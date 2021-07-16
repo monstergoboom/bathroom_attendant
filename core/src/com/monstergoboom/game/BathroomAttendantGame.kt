@@ -6,16 +6,19 @@ import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.monstergoboom.game.interfaces.services.GameConfigurationService
+import com.monstergoboom.game.interfaces.services.RenderService
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
 import org.slf4j.LoggerFactory
 
-class BathroomAttendantGame(configurationService: GameConfigurationService)
+class BathroomAttendantGame(
+    private val configurationService: GameConfigurationService,
+    private val renderService: RenderService
+)
     : ApplicationAdapter() {
 
-    private val configurationService: GameConfigurationService = configurationService;
     private val managedSpriteBatch: ManagedSpriteBatch = ManagedSpriteBatch()
     private val managedTexture: ManagedTexture = ManagedTexture()
     private val managedResource: ManagedResource = ManagedResource()
@@ -34,6 +37,8 @@ class BathroomAttendantGame(configurationService: GameConfigurationService)
         managedSpriteBatch.spriteBatch.begin()
         managedSpriteBatch.spriteBatch.draw(managedTexture.texture, 0f, 0f)
         managedSpriteBatch.spriteBatch.end()
+
+        renderService.update(0);
     }
 
     override fun dispose() {
@@ -43,6 +48,8 @@ class BathroomAttendantGame(configurationService: GameConfigurationService)
 
     override fun create() {
         super.create()
+
+        renderService.initialize();
 
         managedSpriteBatch.spriteBatch = SpriteBatch()
         managedTexture.texture = Texture("badlogic.jpg")
