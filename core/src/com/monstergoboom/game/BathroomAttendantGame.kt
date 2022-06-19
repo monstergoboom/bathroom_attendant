@@ -34,11 +34,11 @@ class BathroomAttendantGame(
         Gdx.gl.glClearColor(0.3f, 0.45f, 0.65f, 1f)
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT)
 
-        managedSpriteBatch.spriteBatch.begin()
-        managedSpriteBatch.spriteBatch.draw(managedTexture.texture, 0f, 0f)
-        managedSpriteBatch.spriteBatch.end()
+        // managedSpriteBatch.spriteBatch.begin()
+        // managedSpriteBatch.spriteBatch.draw(managedTexture.texture, 0f, 0f)
+        // managedSpriteBatch.spriteBatch.end()
 
-        renderService.update(0);
+        renderService.update(0f);
     }
 
     override fun dispose() {

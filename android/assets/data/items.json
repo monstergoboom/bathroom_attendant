@@ -4,13 +4,13 @@
       "id": "1",
       "name": "Cheap Gas Station Gum",
       "description": "This is the run of the mill, cheapest gum you can find from the gas station.",
-      "value": 0.55
+      "value": 1000000
     },
     {
       "id": "2",
       "name": "Restaurant Style Breath Mints",
       "description": "The breath mints are as old as you are. You can see parts of the mint breaking off in the package.",
-      "value": 0.75
+      "value": 1000000
     }
   ]
 }

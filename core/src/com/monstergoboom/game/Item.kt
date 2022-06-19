@@ -6,11 +6,16 @@ import com.monstergoboom.game.interfaces.Sellable
 import com.monstergoboom.game.interfaces.Valuable
 import com.monstergoboom.game.models.ItemData
 
-class Item(val item: ItemData): Valuable, Sellable, Purchasable, Identifiable {
-    override fun worth(): Float {
-        TODO("not implemented")
-    }
-
+class Item(val item: ItemData,
+           override var id: String,
+           override var name: String,
+           override var description: String,
+           override var cost: Double,
+           override var markup: Double,
+           override var discount: Double,
+           override var currency: String,
+           override var market: String
+): Valuable, Sellable, Purchasable, Identifiable {
     override fun buy() {
         TODO("not implemented")
     }
@@ -27,15 +32,7 @@ class Item(val item: ItemData): Valuable, Sellable, Purchasable, Identifiable {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun getId(): String {
-        TODO("Not yet implemented")
-    }
-
-    override fun getName(): String {
-        TODO("Not yet implemented")
-    }
-
-    override fun getDescription(): String {
+    override fun worth(): Double {
         TODO("Not yet implemented")
     }
 }
