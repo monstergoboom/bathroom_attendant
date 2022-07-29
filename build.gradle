@@ -1,7 +1,7 @@
 buildscript {
-    ext.kotlinVersion = '1.6.21'
-    ext.protobufGradlePluginVersion = '0.8.16'
-    ext.androindToolsBuildGradleVersion = '7.2.0' // confirm support in android studio for latest
+    ext.kotlinVersion = '1.7.10'
+    ext.protobufGradlePluginVersion = '0.8.19'
+    ext.androindToolsBuildGradleVersion = '7.2.1' // confirm support in android studio for latest
 
     repositories {
         gradlePluginPortal()
@@ -33,9 +33,9 @@ allprojects {
         guavaVersion = '31.1-jre'
         guavaAndroidVersion = '31.1-android'
         slf4jVersion = '1.7.30'
-        protobufVersion = '3.17.3'
-        protocVersion = '3.0.0'
-        protobufLite = '3.0.1'
+        protobufVersion = '3.21.4'
+        protocVersion = '3.21.4'
+        protobufLite = '3.21.4'
     }
 
     repositories {
@@ -50,7 +50,7 @@ project(":desktop") {
 
     dependencies {
         implementation project(":core")
-        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl:$gdxVersion"
+        implementation "com.badlogicgames.gdx:gdx-backend-lwjgl3:$gdxVersion"
         implementation "com.badlogicgames.gdx:gdx-platform:$gdxVersion:natives-desktop"
         implementation "com.badlogicgames.gdx:gdx-box2d-platform:$gdxVersion:natives-desktop"
         implementation "com.badlogicgames.gdx:gdx-freetype-platform:$gdxVersion:natives-desktop"
@@ -97,7 +97,7 @@ project(":android") {
         api "org.slf4j:slf4j-android:$slf4jVersion"
         api "com.google.guava:guava:$guavaAndroidVersion"
 
-        coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.5"
+        coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:1.1.0"
     }
 }
 
@@ -114,8 +114,8 @@ project(":core") {
         implementation "com.badlogicgames.ashley:ashley:$ashleyVersion"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCrVersion"
-        api "org.slf4j:slf4j-api:1.7.30"
-        implementation "com.google.protobuf:protobuf-java:$protobufVersion"
+        api "org.slf4j:slf4j-api:1.7.36"
+        implementation "com.google.protobuf:protobuf-kotlin:$protobufVersion"
     }
 }
 

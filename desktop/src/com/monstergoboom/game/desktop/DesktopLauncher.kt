@@ -1,8 +1,8 @@
 package com.monstergoboom.game.desktop
 
 import com.badlogic.gdx.Files
-import com.badlogic.gdx.backends.lwjgl.LwjglApplication
-import com.badlogic.gdx.backends.lwjgl.LwjglApplicationConfiguration
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application
+import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.math.Rectangle
 import com.monstergoboom.game.BathroomAttendantGame
@@ -10,19 +10,21 @@ import com.monstergoboom.game.services.CoreConfiguration
 
 object DesktopLauncher {
     @JvmStatic fun main(arg: Array<String>) {
-        val config = LwjglApplicationConfiguration()
+        val config = Lwjgl3ApplicationConfiguration()
 
-        config.title = "Bathroom Attendant v1.0"
-        config.height = 768
-        config.width = 1024
-        config.addIcon("servant.jpg", Files.FileType.Absolute)
-        config.initialBackgroundColor = Color.BLACK
+        val width = 1024;
+        val height = 786;
+
+        config.setTitle("Bathroom Attendant");
+        config.setWindowedMode(width, height);
+        config.setWindowIcon(Files.FileType.Absolute, "servant.jpg");
+        config.setInitialBackgroundColor(Color.BLUE);
 
         val gameConfig = CoreConfiguration()
         val renderService = ConsoleRenderer(Rectangle(10f, 10f,
-            (config.width - 20).toFloat(), (config.height - 20).toFloat()
+            (width - 20).toFloat(), (height - 20).toFloat()
         ))
 
-        LwjglApplication(BathroomAttendantGame(gameConfig, renderService), config)
+        Lwjgl3Application(BathroomAttendantGame(gameConfig, renderService), config)
     }
 }

@@ -13,7 +13,7 @@ eclipse.project {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.13.0"
+        artifact = "com.google.protobuf:protoc:3.21.4"
     }
     generateProtoTasks {
         all().each { task ->
