@@ -29,15 +29,16 @@ allprojects {
         guavaVersion = '32.1.2-jre'
         guavaAndroidVersion = '32.1.2-android'
         slf4jVersion = '2.0.7'
+        slf4jAndroidVersion = '1.7.36'
         protobufVersion = '3.24.0'
         protocVersion = '3.0.0'
         protobufLite = '3.0.1'
     }
 
     repositories {
+        mavenCentral()
         google()
         gradlePluginPortal()
-        mavenCentral()
     }
 }
 
@@ -88,7 +89,8 @@ project(":android") {
         implementation "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$kotlinCrVersion"
-        api "org.slf4j:slf4j-android:$slf4jVersion"
+
+        api "org.slf4j:slf4j-android:$slf4jAndroidVersion"
         api "com.google.guava:guava:$guavaAndroidVersion"
 
         coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.3"

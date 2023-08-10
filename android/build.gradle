@@ -1,5 +1,3 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 android {
     android {
         namespace "com.monstergoboom.game.ba"
@@ -77,12 +75,6 @@ tasks.configureEach { packageTask ->
     }
 }
 
-tasks.withType(KotlinCompile).configureEach {
-    kotlinOptions {
-        jvmTarget = "11"
-    }
-}
-
 tasks.register('run', Exec) {
     def path
     def localProperties = project.file("../local.properties")
@@ -128,7 +120,7 @@ eclipse {
     project {
         name = appName + "-android"
         natures 'com.android.ide.eclipse.adt.AndroidNature'
-        buildCommands.clear();
+        buildCommands.clear()
         buildCommand "com.android.ide.eclipse.adt.ResourceManagerBuilder"
         buildCommand "com.android.ide.eclipse.adt.PreCompilerBuilder"
         buildCommand "org.eclipse.jdt.core.javabuilder"
@@ -139,7 +131,7 @@ eclipse {
 // sets up the Android Idea project, using the old Ant based build.
 idea {
     module {
-        sourceDirs += file("src");
+        sourceDirs += file("src")
         scopes = [ COMPILE: [plus:[project.configurations.compileClasspath ]]]
 
         iml {
