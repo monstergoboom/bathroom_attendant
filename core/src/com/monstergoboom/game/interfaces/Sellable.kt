@@ -1,6 +1,6 @@
 package com.monstergoboom.game.interfaces
 
 interface Sellable {
-    fun price(): Float
+    fun price(): Long
     fun sell()
 }

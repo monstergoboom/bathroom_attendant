@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
+
 apply plugin: "kotlin"
 
 sourceSets.main.java.srcDirs = [ "src/" ]
@@ -5,20 +7,19 @@ sourceSets.main.java.srcDirs = [ "src/" ]
 project.ext.mainClassName = "com.monstergoboom.game.desktop.DesktopLauncher"
 project.ext.assetsDir = new File("../android/assets")
 
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions {
-        jvmTarget = "17"
-    }
+tasks.withType(KotlinCompile).configureEach {
 }
 
-task run(dependsOn: classes, type: JavaExec) {
+tasks.register('run', JavaExec) {
+    dependsOn classes
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
     ignoreExitValue = true
 }
 
-task debug(dependsOn: classes, type: JavaExec) {
+tasks.register('debug', JavaExec) {
+    dependsOn classes
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
@@ -26,12 +27,12 @@ task debug(dependsOn: classes, type: JavaExec) {
     debug = true
 }
 
-task dist(type: Jar) {
+tasks.register('dist', Jar) {
     from files(sourceSets.main.output.classesDirs)
-    from {configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) }}
+    from { configurations.compileClasspath.collect { it.isDirectory() ? it : zipTree(it) } }
     from files(sourceSets.main.output.resourcesDir)
     from files(project.assetsDir)
- 
+
     manifest {
         attributes 'Main-Class': project.mainClassName
     }
@@ -46,13 +47,13 @@ eclipse {
     }
 }
 
-task afterEclipseImport(description: "Post processing after project generation", group: "IDE") {
-  doLast {
-    def classpath = new XmlParser().parse(file(".classpath"))
-    new Node(classpath, "classpathentry", [ kind: 'src', path: 'assets' ]);
-    def writer = new FileWriter(file(".classpath"))
-    def printer = new XmlNodePrinter(new PrintWriter(writer))
-    printer.setPreserveWhitespace(true)
-    printer.print(classpath)
-  }
+tasks.register('afterEclipseImport') {
+    doLast {
+        def classpath = new XmlParser().parse(file(".classpath"))
+        new Node(classpath, "classpathentry", [kind: 'src', path: 'assets']);
+        def writer = new FileWriter(file(".classpath"))
+        def printer = new XmlNodePrinter(new PrintWriter(writer))
+        printer.setPreserveWhitespace(true)
+        printer.print(classpath)
+    }
 }

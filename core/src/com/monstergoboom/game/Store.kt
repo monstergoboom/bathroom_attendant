@@ -1,10 +1,7 @@
 package com.monstergoboom.game
 
-import com.monstergoboom.game.models.ItemData
-import java.util.*
-
 class Store {
-    private val inventory: MutableMap<CategoryType, Map<Item, Int>> = mutableMapOf<CategoryType, Map<Item, Int>>();
+    private val inventory: MutableMap<CategoryType, Map<Item, Int>> = mutableMapOf();
     private val catalog: Catalog = Catalog()
 
     fun addItem(category: CategoryType, item: Item, quantity: Int) {

@@ -7,24 +7,27 @@ import com.monstergoboom.game.interfaces.Valuable
 import com.monstergoboom.game.models.ItemData
 
 class Item(val item: ItemData,
-           override var id: String,
-           override var name: String,
-           override var description: String,
-           override var cost: Double,
-           override var markup: Double,
-           override var discount: Double,
-           override var currency: String,
-           override var market: String
+           var id: String,
+           var name: String,
+           var description: String,
+           var cost: String,
+           var markup: Double,
+           var discount: Double,
+           var currency: String,
+           var market: String,
+           var scale: Long,
+           var coupon: String,
+           var durability: Double
 ): Valuable, Sellable, Purchasable, Identifiable {
     override fun buy() {
         TODO("not implemented")
     }
 
-    override fun offer(): Float {
+    override fun offer(): Long {
         TODO("Not yet implemented")
     }
 
-    override fun price(): Float {
+    override fun price(): Long {
         TODO("Not yet implemented")
     }
 
@@ -33,6 +36,10 @@ class Item(val item: ItemData,
     }
 
     override fun worth(): Double {
+        TODO("Not yet implemented")
+    }
+
+    override fun id() {
         TODO("Not yet implemented")
     }
 }

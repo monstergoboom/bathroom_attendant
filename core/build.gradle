@@ -4,7 +4,7 @@ apply plugin: "com.google.protobuf"
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
 sourceSets.main.java.srcDirs = [ "src/",
-                                 "${protobuf.generatedFilesBaseDir}/main/javalite"]
+                                 "${protobuf.generatedFilesBaseDir}/main/java"]
 sourceSets.main.proto.srcDirs = ["src/protos"]
 
 eclipse.project {
@@ -13,21 +13,15 @@ eclipse.project {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.13.0"
+        artifact = "com.google.protobuf:protoc:3.0.0"
     }
+
+    // Enable Kotlin generation
     generateProtoTasks {
-        all().each { task ->
-            task.builtins {
-                java {
-                }
+        all().forEach {
+            it.builtins {
             }
         }
-    }
-}
-
-tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).all {
-    kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17
     }
 }
 

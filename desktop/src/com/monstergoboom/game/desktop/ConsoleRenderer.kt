@@ -15,7 +15,7 @@ import com.monstergoboom.game.interfaces.services.RenderService
 import org.lwjgl.opengl.GL11.glLineWidth
 
 class ConsoleRenderer (private val rect: Rectangle,
-                       private val foregroundColor: Color = Color.GOLDENROD,
+                       private val foregroundColor: Color = Color.ORANGE,
                        private val backgroundColor: Color = Color.BLACK,
                        private val borderColor: Color = Color.WHITE,
                         private val borderWidth: Float = 1f) : RenderService{

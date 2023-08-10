@@ -4,10 +4,13 @@ import com.monstergoboom.game.interfaces.Identifiable
 import com.monstergoboom.game.interfaces.Playable
 
 class Attendant(
-    override var id: String,
-    override var name: String,
-    override var description: String
+    var id: String,
+    var name: String,
+    var description: String
 ) : Identifiable, Playable {
     var charisma: Int = 0;
     var cash: Double = 0.0;
+    override fun id() {
+        TODO("Not yet implemented")
+    }
 }

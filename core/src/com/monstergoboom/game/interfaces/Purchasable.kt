@@ -1,6 +1,6 @@
 package com.monstergoboom.game.interfaces
 
 interface Purchasable {
-    fun offer(): Float
+    fun offer(): Long
     fun buy()
 }

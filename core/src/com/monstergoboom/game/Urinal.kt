@@ -3,15 +3,15 @@ package com.monstergoboom.game
 import com.monstergoboom.game.interfaces.*
 
 class Urinal(
-    override var durability: Double,
-    override var id: String,
-    override var name: String,
-    override var description: String,
-    override var cost: Double,
-    override var markup: Double,
-    override var discount: Double,
-    override var currency: String,
-    override var market: String
+    var durability: Double,
+    var id: String,
+    var name: String,
+    var description: String,
+    var cost: Double,
+    var markup: Double,
+    var discount: Double,
+    var currency: String,
+    var market: String
 )
     : Flushable, Interactable, Breakable, Valuable, Identifiable {
     override fun worth(): Double {
@@ -28,5 +28,9 @@ class Urinal(
 
     override fun flush() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun id() {
+        TODO("Not yet implemented")
     }
 }

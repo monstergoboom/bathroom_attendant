@@ -5,15 +5,15 @@ import com.monstergoboom.game.interfaces.Identifiable
 import com.monstergoboom.game.interfaces.Interactable
 import com.monstergoboom.game.interfaces.Valuable
 
-class Sink(override var id: String,
-           override var name: String,
-           override var description: String,
-           override var cost: Double,
-           override var markup: Double,
-           override var discount: Double,
-           override var durability: Double,
-           override var currency: String,
-           override var market: String
+class Sink(var id: String,
+           var name: String,
+           var description: String,
+           var cost: Double,
+           var markup: Double,
+           var discount: Double,
+           var durability: Double,
+           var currency: String,
+           var market: String
 )
     : Interactable, Breakable, Valuable, Identifiable {
 
@@ -27,5 +27,9 @@ class Sink(override var id: String,
 
     override fun damage() {
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    }
+
+    override fun id() {
+        TODO("Not yet implemented")
     }
 }
