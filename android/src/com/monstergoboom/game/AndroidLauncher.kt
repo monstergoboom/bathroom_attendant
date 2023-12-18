@@ -1,7 +1,6 @@
 package com.monstergoboom.game
 
 import android.os.Bundle
-
 import com.badlogic.gdx.backends.android.AndroidApplication
 import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration
 import com.badlogic.gdx.math.Rectangle
@@ -15,7 +14,8 @@ class AndroidLauncher : AndroidApplication() {
         val width = 1024
         val height = 768
 
-        initialize(BathroomAttendantGame(gameConfig, AndroidRenderer(
+        initialize(
+            GameApplication(gameConfig, AndroidRenderer(
             Rectangle(10f, 10f,
             (width - 20).toFloat(), (height - 20).toFloat()
         )

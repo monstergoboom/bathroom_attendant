@@ -3,7 +3,8 @@ package com.monstergoboom.game
 import com.monstergoboom.game.interfaces.Identifiable
 import com.monstergoboom.game.interfaces.Playable
 
-class Attendant(
+
+class Attendant (
     var id: String,
     var name: String,
     var description: String

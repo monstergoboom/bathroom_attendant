@@ -28,7 +28,6 @@ class ItemResource : Resource {
         val hygiene: CategoryType = CategoryType.HYGIENE
 
         items.add(ItemData.newBuilder()
-                .setCategory(hygiene.ordinal)
                 .setProduct(ProductType.DEODORANT.ordinal)
                 .setId(UUID.randomUUID().toString())
                 .setName("Old Spice Classic")
@@ -37,8 +36,8 @@ class ItemResource : Resource {
                         "awesomeabilityness. If your Grandfather hadn't worn it, you wouldn't have " +
                         "existed. You know the smell of fear, it's the opposite of that. Increase " +
                         "your ability to sense other dimensions.")
-                .setValue(1.15f)
-                .setCost(.85f)
+                .setValue(1.15)
+                .setCost(.85)
                 .build())
 
         processed++
@@ -51,8 +50,8 @@ class ItemResource : Resource {
                 .setId(UUID.randomUUID().toString())
                 .setName("Scope Classic Mouthwash")
                 .setDescription("Feel the burn inside your mouth. Original forumula.")
-                .setValue(.75f)
-                .setCost(.35f)
+                .setValue(.75)
+                .setCost(.35)
                 .build())
 
         processed++

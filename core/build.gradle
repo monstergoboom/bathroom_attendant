@@ -3,8 +3,9 @@ apply plugin: "com.google.protobuf"
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-sourceSets.main.java.srcDirs = [ "src/",
-                                 "${protobuf.generatedFilesBaseDir}/main/java"]
+sourceSets.main.java.srcDirs = ["src/",
+                                "${protobuf.generatedFilesBaseDir}/main/java"
+]
 sourceSets.main.proto.srcDirs = ["src/protos"]
 
 eclipse.project {
@@ -13,22 +14,24 @@ eclipse.project {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.0.0"
+        artifact = "com.google.protobuf:protoc:3.21.2"
+    }
+    plugins {
+        javalite {
+            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
+        }
     }
 
-    // Enable Kotlin generation
     generateProtoTasks {
-        all().forEach {
-            it.builtins {
+        all().each { task ->
+            task.builtins {
+                java {
+                    option 'lite'
+                }
+                kotlin {
+                    option 'lite'
+                }
             }
         }
     }
-}
-
-compileKotlin {
-    dependsOn('generateProto')
-}
-
-compileTestKotlin {
-    dependsOn('generateProto')
 }

@@ -9,8 +9,9 @@ message ItemData {
     string id = 1;
     string name = 2;
     string description = 3;
-    float cost = 4;
-    float value = 5;
+    double cost = 4;
+    double value = 5;
     int32 category = 6;
     int32 product = 7;
+    int32 quantity = 8;
 }
