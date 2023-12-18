@@ -1,7 +1,10 @@
 buildscript {
     ext.kotlinVersion = '1.9.21'
     ext.protobufGradlePluginVersion = '0.9.4'
-    ext.androindToolsBuildGradleVersion = '8.1.0' // confirm support in android studio for latest
+    ext.androindToolsBuildGradleVersion = '8.1.3' // confirm support in android studio for latest
+
+    project.ext.lwjglVersion = "3.3.3"
+    project.ext.lwjglNatives = "natives-macos-arm64"
 
     repositories {
         gradlePluginPortal()
@@ -28,13 +31,12 @@ allprojects {
         gdxVersion = "1.12.1"
         gdxControllersVersion = '2.2.3'
         kotlinCrVersion = '1.7.3'
-        guavaVersion = '32.1.2-jre'
-        guavaAndroidVersion = '32.1.2-android'
-        slf4jVersion = '2.0.7'
+        guavaVersion = '32.1.3-jre'
+        guavaAndroidVersion = '32.1.3-android'
+        slf4jVersion = '2.0.9'
         slf4jAndroidVersion = '1.7.36'
-        protobufVersion = '3.24.0'
-        protocVersion = '3.0.0'
-        protobufLite = '3.0.1'
+        protobufVersion = '3.25.0'
+        protocVersion = '3.25.0'
         koin_ksp_version = '1.3.0'
     }
 
@@ -100,7 +102,7 @@ project(":android") {
 
         api "com.google.guava:guava:$guavaAndroidVersion"
 
-        coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.3"
+        coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.4"
     }
 }
 
