@@ -5,30 +5,29 @@ import com.badlogic.gdx.Gdx
 import com.badlogic.gdx.graphics.GL20
 import com.badlogic.gdx.graphics.Texture
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
-import com.monstergoboom.game.interfaces.services.GameConfigurationService
-import com.monstergoboom.game.interfaces.services.RenderService
-import com.monstergoboom.game.services.PlayerService
+import com.monstergoboom.game.services.CurrencyService
+import com.monstergoboom.game.services.DataService
+import com.monstergoboom.game.services.RenderService
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.coroutineScope
 import kotlinx.coroutines.runBlocking
 import kotlinx.coroutines.withContext
-import mu.KotlinLogging
-import org.koin.dsl.module
-import org.koin.core.context.startKoin
-import org.koin.core.module.dsl.singleOf
+import org.koin.core.component.KoinComponent
+import org.koin.core.component.inject
 
-class GameApplication (
-    private val configurationService: GameConfigurationService,
-    private val renderService: RenderService,
-)
-    : ApplicationAdapter() {
+class GameApplication :
+    ApplicationAdapter(), KoinComponent {
+    private val log = KotlinLogging.logger {}
 
-    private val managedSpriteBatch: ManagedSpriteBatch = ManagedSpriteBatch()
-    private val managedTexture: ManagedTexture = ManagedTexture()
-    private val managedResource: ManagedResource = ManagedResource()
-    private val itemResource: ItemResource = ItemResource()
+    private val managedSpriteBatch: ManagedSpriteBatch by inject()
+    private val managedTexture: ManagedTexture by inject()
+    private val managedResource: ManagedResource by inject()
+    private val itemResource: ItemResource by inject()
+    private val renderService: RenderService by inject()
+    private val currencyService: CurrencyService by inject()
+    private val dataService: DataService by inject()
 
-    private val logger = KotlinLogging.logger {}
 
     override fun render() {
         Gdx.gl.glClearColor(0.3f, 0.45f, 0.65f, 1f)
@@ -45,27 +44,25 @@ class GameApplication (
     override fun create() {
         super.create()
 
-        startKoin {
-            printLogger()
-            module {
-                singleOf(::PlayerService) {}
-            }
-        }
-
-        renderService.initialize();
+        renderService.initialize()
 
         managedSpriteBatch.spriteBatch = SpriteBatch()
         managedTexture.texture = Texture("badlogic.jpg")
 
-        logger.info("Registering Resources")
+        log.info { "Registering Resources" }
         managedResource.register(itemResource)
 
-        logger.info("Loading Resources")
+        log.info { "Loading Resources" }
         runBlocking {
             loadResources()
         }
 
-        logger.info("Resources Loaded")
+        log.info { "Resources Loaded" }
+
+        log.info { "Country:  ${currencyService.locale.isO3Country}, " +
+                "Language: ${currencyService.locale.isO3Language}"}
+
+        dataService.open()
     }
 
     private suspend fun loadResources() {

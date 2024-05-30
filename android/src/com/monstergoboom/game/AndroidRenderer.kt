@@ -2,16 +2,14 @@ package com.monstergoboom.game
 
 import android.opengl.GLES20.glLineWidth
 import com.badlogic.gdx.Gdx
-import com.badlogic.gdx.files.FileHandle
 import com.badlogic.gdx.graphics.g2d.BitmapFont
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
 import com.badlogic.gdx.graphics.glutils.ShapeRenderer
 import com.badlogic.gdx.scenes.scene2d.Stage
 import com.badlogic.gdx.scenes.scene2d.ui.Table
-import com.monstergoboom.game.interfaces.services.RenderService
+import com.monstergoboom.game.services.RenderService
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.math.Rectangle
-import java.io.File
 
 class AndroidRenderer(private val rect: Rectangle,
                       private val foregroundColor: Color = Color.GOLDENROD,

@@ -1,28 +1,26 @@
 package com.monstergoboom.game
 
 import com.monstergoboom.game.interfaces.Resource
-import org.slf4j.LoggerFactory.getLogger
+import io.github.oshai.kotlinlogging.KotlinLogging
+import org.koin.core.annotation.Single
 
+@Single
 class ManagedResource {
-    companion object {
-        @Suppress("JAVA_CLASS_ON_COMPANION")
-        @JvmStatic
-        private val logger = getLogger(javaClass.enclosingClass)
-    }
+    private val log = KotlinLogging.logger {}
 
-    var resources = mutableListOf<Resource>()
+    private var resources = mutableListOf<Resource>()
 
     fun register(resource: Resource) {
         resources.add(resource)
     }
 
     suspend fun load() {
-        logger.info("Loading All Resources...")
+        log.info { "Loading All Resources..." }
         resources.forEach { r ->
-            logger.info("Loading -> %s".format(r.javaClass.simpleName))
+            log.info { "Loading -> %s".format(r.javaClass.simpleName) }
             r.load()
-            logger.info("7")
+            log.info { "7" }
         }
-        logger.info("...Completed All Resource Loading.")
+        log.info { "...Completed All Resource Loading." }
     }
 }

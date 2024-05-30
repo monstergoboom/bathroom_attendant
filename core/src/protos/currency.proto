@@ -1,0 +1,15 @@
+syntax = "proto3";
+
+package model;
+
+option java_package="com.monstergoboom.game.models";
+option java_multiple_files = true;
+
+message Currency {
+  string alphabetic_code = 1;
+  string currency = 2;
+  string entity = 3;
+  int32 minor_unit = 4;
+  string numeric_code = 5;
+  string withdrawal_date = 6;
+}

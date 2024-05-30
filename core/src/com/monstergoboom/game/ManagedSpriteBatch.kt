@@ -1,7 +1,9 @@
 package com.monstergoboom.game
 
 import com.badlogic.gdx.graphics.g2d.SpriteBatch
+import org.koin.core.annotation.Single
 
-class ManagedSpriteBatch() {
+@Single
+class ManagedSpriteBatch {
     lateinit var spriteBatch: SpriteBatch
 }

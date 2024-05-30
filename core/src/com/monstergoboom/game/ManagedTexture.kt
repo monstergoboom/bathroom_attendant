@@ -1,7 +1,9 @@
 package com.monstergoboom.game
 
 import com.badlogic.gdx.graphics.Texture
+import org.koin.core.annotation.Single
 
-class ManagedTexture() {
+@Single
+class ManagedTexture {
     lateinit var texture: Texture
 }

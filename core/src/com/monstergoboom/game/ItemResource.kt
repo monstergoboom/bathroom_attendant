@@ -2,26 +2,24 @@ package com.monstergoboom.game
 
 import com.monstergoboom.game.interfaces.Resource
 import com.monstergoboom.game.models.ItemData
+import io.github.oshai.kotlinlogging.KotlinLogging
 import kotlinx.coroutines.yield
-import org.slf4j.LoggerFactory.getLogger
+import org.koin.core.annotation.Single
 import java.util.*
 
+@Single
 class ItemResource : Resource {
+    private val log = KotlinLogging.logger {}
+
     private val items: MutableList<ItemData> = mutableListOf()
 
     private var status: Float = 0f
     private var totalItems: Int = 0
     private var processed: Int = 0
 
-    companion object {
-        @Suppress("JAVA_CLASS_ON_COMPANION")
-        @JvmStatic
-        private val log = getLogger(javaClass.enclosingClass)
-    }
-
     override suspend fun load(): Boolean {
 
-        log.info("ItemResource->load() : Started")
+        log.info { "ItemResource->load() : Started" }
 
         totalItems = 2
 
@@ -36,8 +34,6 @@ class ItemResource : Resource {
                         "awesomeabilityness. If your Grandfather hadn't worn it, you wouldn't have " +
                         "existed. You know the smell of fear, it's the opposite of that. Increase " +
                         "your ability to sense other dimensions.")
-                .setValue(1.15)
-                .setCost(.85)
                 .build())
 
         processed++
@@ -50,13 +46,11 @@ class ItemResource : Resource {
                 .setId(UUID.randomUUID().toString())
                 .setName("Scope Classic Mouthwash")
                 .setDescription("Feel the burn inside your mouth. Original forumula.")
-                .setValue(.75)
-                .setCost(.35)
                 .build())
 
         processed++
 
-        log.info("ItemResource->load() : Complete")
+        log.info { "ItemResource->load() : Complete" }
         return true
     }
 

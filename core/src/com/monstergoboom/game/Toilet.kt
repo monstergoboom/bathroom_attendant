@@ -1,10 +1,10 @@
 package com.monstergoboom.game
 
 import com.monstergoboom.game.interfaces.*
+import java.util.UUID
 
 class Toilet(
     var durability: Double,
-    var id: String,
     var name: String,
     var description: String,
     var cost: Double,
@@ -30,7 +30,7 @@ class Toilet(
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun id() {
-        TODO("Not yet implemented")
+    override fun id(): String {
+        return UUID.randomUUID().toString()
     }
 }

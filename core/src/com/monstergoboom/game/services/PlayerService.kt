@@ -5,7 +5,7 @@ import org.koin.core.annotation.Single
 import org.koin.core.component.KoinComponent
 
 @Single
-class PlayerService() : KoinComponent {
+class PlayerService {
 
     fun current(): Attendant {
         TODO("Not yet implemented")

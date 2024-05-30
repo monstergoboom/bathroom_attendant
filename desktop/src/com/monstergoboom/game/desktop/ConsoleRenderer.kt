@@ -11,14 +11,16 @@ import com.badlogic.gdx.scenes.scene2d.ui.Table
 import com.diogonunes.jcolor.Ansi.colorize
 import com.diogonunes.jcolor.Attribute
 import com.monstergoboom.game.ManagedSpriteBatch
-import com.monstergoboom.game.interfaces.services.RenderService
+import com.monstergoboom.game.services.RenderService
+import org.koin.core.annotation.Single
 import org.lwjgl.opengl.GL11.glLineWidth
 
+@Single
 class ConsoleRenderer (private val rect: Rectangle,
                        private val foregroundColor: Color = Color.ORANGE,
                        private val backgroundColor: Color = Color.BLACK,
                        private val borderColor: Color = Color.WHITE,
-                        private val borderWidth: Float = 1f) : RenderService{
+                       private val borderWidth: Float = 1f) : RenderService {
 
     private lateinit var font: BitmapFont
     private lateinit var batch: ManagedSpriteBatch

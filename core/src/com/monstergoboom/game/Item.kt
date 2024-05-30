@@ -5,20 +5,16 @@ import com.monstergoboom.game.interfaces.Purchasable
 import com.monstergoboom.game.interfaces.Sellable
 import com.monstergoboom.game.interfaces.Valuable
 import com.monstergoboom.game.models.ItemData
+import java.util.UUID
 
 class Item(val item: ItemData,
-           var id: String,
-           var name: String,
-           var description: String,
-           var cost: String,
-           var markup: Double,
-           var discount: Double,
            var currency: String,
            var market: String,
            var scale: Long,
-           var coupon: String,
-           var durability: Double
+           var coupon: String
 ): Valuable, Sellable, Purchasable, Identifiable {
+    var durability: Double = 1.0
+
     override fun buy() {
         TODO("not implemented")
     }
@@ -39,7 +35,7 @@ class Item(val item: ItemData,
         TODO("Not yet implemented")
     }
 
-    override fun id() {
-        TODO("Not yet implemented")
+    override fun id(): String {
+        return UUID.randomUUID().toString()
     }
 }

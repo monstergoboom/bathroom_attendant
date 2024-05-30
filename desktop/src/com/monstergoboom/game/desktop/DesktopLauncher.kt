@@ -5,8 +5,12 @@ import com.badlogic.gdx.backends.lwjgl3.Lwjgl3Application
 import com.badlogic.gdx.backends.lwjgl3.Lwjgl3ApplicationConfiguration
 import com.badlogic.gdx.graphics.Color
 import com.badlogic.gdx.math.Rectangle
+import com.monstergoboom.game.AppModule
 import com.monstergoboom.game.GameApplication
-import com.monstergoboom.game.services.CoreConfiguration
+import com.monstergoboom.game.services.RenderService
+import org.koin.core.context.GlobalContext.startKoin
+import org.koin.dsl.module
+import org.koin.ksp.generated.*
 
 object DesktopLauncher {
     @JvmStatic fun main(arg: Array<String>) {
@@ -20,11 +24,19 @@ object DesktopLauncher {
         config.setWindowIcon(Files.FileType.Absolute, "servant.jpg")
         config.setInitialBackgroundColor(Color.BLACK)
 
-        val gameConfig = CoreConfiguration()
         val renderService = ConsoleRenderer(Rectangle(10f, 10f,
             (width - 20).toFloat(), (height - 20).toFloat()
         ))
 
-        Lwjgl3Application(GameApplication(gameConfig, renderService), config)
+        val rendererModule = module {
+            single<RenderService> { renderService }
+        }
+
+        startKoin {
+            modules(AppModule().module,
+                rendererModule)
+        }
+
+        Lwjgl3Application(GameApplication(), config)
     }
 }

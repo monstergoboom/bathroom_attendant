@@ -2,9 +2,11 @@ package com.monstergoboom.game
 
 import com.monstergoboom.game.interfaces.Identifiable
 import com.monstergoboom.game.interfaces.NonPlayable
+import java.util.UUID
 
-class Patron(var id: String, var name: String, var description: String) : Identifiable, NonPlayable {
-    override fun id() {
-        TODO("Not yet implemented")
+class Patron(var name: String, var description: String) :
+    Identifiable, NonPlayable {
+    override fun id(): String {
+        return UUID.randomUUID().toString()
     }
 }

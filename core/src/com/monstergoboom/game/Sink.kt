@@ -4,9 +4,9 @@ import com.monstergoboom.game.interfaces.Breakable
 import com.monstergoboom.game.interfaces.Identifiable
 import com.monstergoboom.game.interfaces.Interactable
 import com.monstergoboom.game.interfaces.Valuable
+import java.util.UUID
 
-class Sink(var id: String,
-           var name: String,
+class Sink(var name: String,
            var description: String,
            var cost: Double,
            var markup: Double,
@@ -29,7 +29,7 @@ class Sink(var id: String,
         TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 
-    override fun id() {
-        TODO("Not yet implemented")
+    override fun id(): String {
+        return UUID.randomUUID().toString()
     }
 }
