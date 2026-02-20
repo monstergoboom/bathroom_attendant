@@ -3,10 +3,26 @@ apply plugin: "com.google.protobuf"
 
 [compileJava, compileTestJava]*.options*.encoding = 'UTF-8'
 
-sourceSets.main.java.srcDirs = ["src/",
-                                "${protobuf.generatedFilesBaseDir}/main/java"
-]
-sourceSets.main.proto.srcDirs = ["src/protos"]
+sourceSets {
+    main {
+        java.srcDirs = ["src/", "${buildDir}/generated/sources/proto/main/java"]
+        kotlin.srcDirs += "${buildDir}/generated/sources/proto/main/kotlin"
+        proto.srcDirs = ["src/protos"]
+    }
+}
+
+// Ensure protobuf generation runs before compilation and KSP
+tasks.named("compileKotlin") {
+    dependsOn("generateProto")
+}
+
+tasks.named("compileJava") {
+    dependsOn("generateProto")
+}
+
+afterEvaluate {
+    tasks.findByName("kspKotlin")?.dependsOn("generateProto")
+}
 
 eclipse.project {
     name = appName + "-core"
@@ -14,12 +30,7 @@ eclipse.project {
 
 protobuf {
     protoc {
-        artifact = "com.google.protobuf:protoc:3.21.2"
-    }
-    plugins {
-        javalite {
-            artifact = 'com.google.protobuf:protoc-gen-javalite:3.0.0'
-        }
+        artifact = "com.google.protobuf:protoc:4.29.3"
     }
 
     generateProtoTasks {
@@ -37,5 +48,5 @@ protobuf {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.11.4'
 }

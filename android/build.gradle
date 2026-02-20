@@ -20,8 +20,8 @@ android {
     }
     defaultConfig {
         applicationId "com.monstergoboom.game.ba"
-        targetSdkVersion 33
-        compileSdk 33
+        targetSdkVersion 35
+        compileSdk 35
         minSdkVersion 29
         versionCode 1
         versionName "1.0"
@@ -152,6 +152,5 @@ idea {
 }
 
 dependencies {
-    implementation project(':core')
     implementation project(':core')
 }

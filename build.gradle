@@ -1,9 +1,9 @@
 buildscript {
-    ext.kotlinVersion = '1.9.21'
-    ext.protobufGradlePluginVersion = '0.9.4'
-    ext.androindToolsBuildGradleVersion = '8.1.3' // confirm support in android studio for latest
+    ext.kotlinVersion = '2.1.20'
+    ext.protobufGradlePluginVersion = '0.9.5'
+    ext.androidToolsBuildGradleVersion = '8.7.3'
 
-    project.ext.lwjglVersion = "3.3.3"
+    project.ext.lwjglVersion = "3.3.4"
     project.ext.lwjglNatives = "natives-macos-arm64"
 
     repositories {
@@ -13,10 +13,10 @@ buildscript {
     }
 
     dependencies {
-        classpath "com.android.tools.build:gradle:$androindToolsBuildGradleVersion"
+        classpath "com.android.tools.build:gradle:$androidToolsBuildGradleVersion"
         classpath "com.google.protobuf:protobuf-gradle-plugin:$protobufGradlePluginVersion"
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlinVersion"
-        classpath 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:1.9.21-1.0.16'
+        classpath 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin:2.1.20-1.0.32'
     }
 }
 
@@ -25,19 +25,32 @@ allprojects {
     apply plugin: "idea"
 
     version = '1.0'
+
+    // Set consistent JVM target for all modules
+    tasks.withType(org.jetbrains.kotlin.gradle.tasks.KotlinCompile).configureEach {
+        compilerOptions {
+            jvmTarget = org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_17
+        }
+    }
+
+    tasks.withType(JavaCompile).configureEach {
+        sourceCompatibility = JavaVersion.VERSION_17
+        targetCompatibility = JavaVersion.VERSION_17
+    }
+
     ext {
         appName = "bathroom-attendant"
-        gdxVersion = "1.12.1"
-        gdxControllersVersion = '2.2.3'
-        kotlinCrVersion = '1.7.3'
-        guavaVersion = '32.1.3-jre'
-        guavaAndroidVersion = '32.1.3-android'
-        slf4jVersion = '2.0.9'
-        slf4jAndroidVersion = '1.7.36'
-        protobufVersion = '3.25.0'
-        protocVersion = '3.25.0'
-        koin_ksp_version = '1.3.0'
-        koin_version = '3.5.3'
+        gdxVersion = "1.13.1"
+        gdxControllersVersion = '2.2.4'
+        kotlinCrVersion = '1.10.1'
+        guavaVersion = '33.4.0-jre'
+        guavaAndroidVersion = '33.4.0-android'
+        slf4jVersion = '2.0.16'
+        slf4jAndroidVersion = '2.0.16'
+        protobufVersion = '4.29.3'
+        protocVersion = '4.29.3'
+        koin_ksp_version = '1.4.0'
+        koin_version = '4.0.2'
     }
 
     repositories {
@@ -62,18 +75,17 @@ project(":desktop") {
         implementation "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
         implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
         implementation "com.google.guava:guava:$guavaVersion"
-        implementation "com.diogonunes:JColor:5.0.1"
-        implementation 'ch.qos.logback:logback-classic:1.4.14'
+        implementation "com.diogonunes:JColor:5.5.1"
+        implementation 'ch.qos.logback:logback-classic:1.5.16'
         implementation "io.insert-koin:koin-core:$koin_version"
         implementation "io.insert-koin:koin-annotations:$koin_ksp_version"
-        
-        implementation 'net.logstash.logback:logstash-logback-encoder:7.4'
-        implementation 'br.com.crazycrowd:logback-jackson:0.1.6'
-        implementation 'com.fasterxml.jackson.core:jackson-databind:2.16.0'
 
-        api 'io.github.oshai:kotlin-logging-jvm:6.0.1'
+        implementation 'net.logstash.logback:logstash-logback-encoder:8.0'
+        implementation 'com.fasterxml.jackson.core:jackson-databind:2.18.2'
 
-        ksp "io.insert-koin:koin-ksp-compiler-jvm:$koin_ksp_version"
+        api 'io.github.oshai:kotlin-logging-jvm:7.0.3'
+
+        ksp "io.insert-koin:koin-ksp-compiler:$koin_ksp_version"
     }
 }
 
@@ -109,7 +121,7 @@ project(":android") {
 
         api "com.google.guava:guava:$guavaAndroidVersion"
 
-        coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.0.4"
+        coreLibraryDesugaring "com.android.tools:desugar_jdk_libs:2.1.4"
     }
 }
 
@@ -124,11 +136,12 @@ project(":core") {
         api "com.badlogicgames.gdx-controllers:gdx-controllers-core:$gdxControllersVersion"
         api "com.badlogicgames.gdx:gdx-box2d:$gdxVersion"
         api "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion"
-        api 'io.github.oshai:kotlin-logging-jvm:6.0.1'
+        api 'io.github.oshai:kotlin-logging-jvm:7.0.3'
 
         implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$kotlinCrVersion"
-        implementation "com.google.protobuf:protobuf-java:$protobufVersion"
-        implementation 'org.xerial:sqlite-jdbc:3.45.1.0'
+        implementation "com.google.protobuf:protobuf-javalite:$protobufVersion"
+        implementation "com.google.protobuf:protobuf-kotlin-lite:$protobufVersion"
+        implementation 'org.xerial:sqlite-jdbc:3.49.1.0'
         implementation "io.insert-koin:koin-core:$koin_version"
         implementation "io.insert-koin:koin-annotations:$koin_ksp_version"
         ksp "io.insert-koin:koin-ksp-compiler:$koin_ksp_version"

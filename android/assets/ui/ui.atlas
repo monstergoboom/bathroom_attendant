@@ -1,0 +1,55 @@
+
+ui.png
+size: 512, 128
+format: RGBA8888
+filter: Linear, Linear
+repeat: none
+divider
+  rotate: false
+  xy: 2, 2
+  size: 96, 22
+  orig: 96, 22
+  offset: 0, 0
+  index: -1
+divider-fade
+  rotate: false
+  xy: 198, 100
+  size: 96, 22
+  orig: 96, 22
+  offset: 0, 0
+  index: -1
+panel-default
+  rotate: false
+  xy: 198, 50
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+panel-double
+  rotate: false
+  xy: 2, 26
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+panel-double-simple
+  rotate: false
+  xy: 100, 26
+  size: 96, 96
+  orig: 96, 96
+  offset: 0, 0
+  index: -1
+panel-hollow
+  rotate: false
+  xy: 248, 50
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1
+panel-simple
+  rotate: false
+  xy: 298, 74
+  size: 48, 48
+  orig: 48, 48
+  offset: 0, 0
+  index: -1

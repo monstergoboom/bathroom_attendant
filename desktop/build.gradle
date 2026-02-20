@@ -13,6 +13,7 @@ tasks.withType(KotlinCompile).configureEach {
 
 tasks.register('run', JavaExec) {
     dependsOn classes
+    mainClass = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
@@ -21,6 +22,7 @@ tasks.register('run', JavaExec) {
 
 tasks.register('debug', JavaExec) {
     dependsOn classes
+    mainClass = project.mainClassName
     classpath = sourceSets.main.runtimeClasspath
     standardInput = System.in
     workingDir = project.assetsDir
@@ -40,6 +42,14 @@ tasks.register('dist', Jar) {
 }
 
 dist.dependsOn classes
+
+tasks.register('packTextures', JavaExec) {
+    dependsOn classes
+    mainClass = 'com.monstergoboom.game.desktop.TexturePackerRunnerKt'
+    classpath = sourceSets.main.runtimeClasspath
+    workingDir = rootDir
+    description = 'Pack UI source images into TextureAtlas files for each theme'
+}
 
 eclipse {
     project {

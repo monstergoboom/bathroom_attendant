@@ -1,0 +1,66 @@
+{
+  "com.badlogic.gdx.scenes.scene2d.ui.Window$WindowStyle": {
+    "default": {
+      "background": "window-bg",
+      "titleFont": "title-font",
+      "titleFontColor": { "hex": "F2E5FFFF" }
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.Label$LabelStyle": {
+    "default": { "font": "default-font", "fontColor": { "hex": "F2E5FFFF" } },
+    "title":   { "font": "title-font",   "fontColor": { "hex": "F2E5FFFF" } },
+    "small":   { "font": "small-font",   "fontColor": { "hex": "B2A6BFFF" } },
+    "accent":  { "font": "default-font", "fontColor": { "hex": "D9B24DFF" } },
+    "danger":  { "font": "default-font", "fontColor": { "hex": "CC4059FF" } },
+    "success": { "font": "default-font", "fontColor": { "hex": "4DBF80FF" } }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.TextButton$TextButtonStyle": {
+    "default": {
+      "font": "default-font",
+      "fontColor": { "hex": "F2E5FFFF" },
+      "up": "button-up",
+      "over": "button-over",
+      "down": "button-down"
+    },
+    "danger": {
+      "font": "default-font",
+      "fontColor": { "hex": "F2E5FFFF" },
+      "up": "button-danger-up",
+      "over": "button-danger-over",
+      "down": "button-danger-down"
+    },
+    "success": {
+      "font": "default-font",
+      "fontColor": { "hex": "F2E5FFFF" },
+      "up": "button-up",
+      "over": "button-over",
+      "down": "button-down"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.TextField$TextFieldStyle": {
+    "default": {
+      "font": "default-font",
+      "fontColor": { "hex": "F2E5FFFF" },
+      "background": "textfield-bg",
+      "focusedBackground": "textfield-focused",
+      "cursor": "cursor",
+      "selection": "selection"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.List$ListStyle": {
+    "default": {
+      "font": "default-font",
+      "fontColorSelected": { "hex": "F2E5FFFF" },
+      "fontColorUnselected": { "hex": "B2A6BFFF" },
+      "selection": "list-selection",
+      "background": "list-bg"
+    }
+  },
+  "com.badlogic.gdx.scenes.scene2d.ui.ScrollPane$ScrollPaneStyle": {
+    "default": {
+      "background": "scrollpane-bg",
+      "vScrollKnob": "scroll-knob",
+      "hScrollKnob": "scroll-knob"
+    }
+  }
+}

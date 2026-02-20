@@ -59,6 +59,10 @@ class ItemResource : Resource {
     }
 
     override fun resources(): List<Any> {
-        return items;
+        return items
+    }
+
+    fun items(): List<ItemData> {
+        return items
     }
 }

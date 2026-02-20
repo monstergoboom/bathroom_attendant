@@ -16,8 +16,8 @@ object DesktopLauncher {
     @JvmStatic fun main(arg: Array<String>) {
         val config = Lwjgl3ApplicationConfiguration()
 
-        val width = 1024
-        val height = 768
+        val width = 1280
+        val height = 720
 
         config.setTitle("Burgomaster")
         config.setWindowedMode(width, height)

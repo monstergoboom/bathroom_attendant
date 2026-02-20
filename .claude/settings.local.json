@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(./gradlew :desktop:tasks:*)",
+      "WebSearch",
+      "Bash(./gradlew clean build:*)",
+      "Bash(./gradlew :core:generateProto:*)",
+      "Bash(./gradlew :core:compileKotlin:*)",
+      "Bash(./gradlew clean:*)",
+      "Bash(./gradlew build:*)",
+      "Bash(./gradlew :desktop:run:*)",
+      "Bash(cmd.exe /c \"gradlew.bat desktop:run\")",
+      "Bash(cmd.exe:*)",
+      "Bash(timeout:*)",
+      "Bash(powershell.exe -Command \"cd C:/Users/alekm/Documents/Development/bathroom_attendant; ./gradlew.bat desktop:run\")",
+      "Bash(powershell.exe -Command \"cd C:/Users/alekm/Documents/Development/bathroom_attendant; ./gradlew.bat core:compileKotlin --quiet\")",
+      "Bash(python3 -c \":*)",
+      "Bash(python:*)"
+    ]
+  }
+}
